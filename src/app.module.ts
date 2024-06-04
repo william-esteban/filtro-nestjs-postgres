@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TorneosController } from './torneos/torneos.controller';
+import { TorneosModule } from './torneos/torneos.module';
 
 @Module({
   imports: [
@@ -16,10 +18,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       synchronize: true,
       ssl: true,
     }),
+    TorneosModule,
     
 
   ],
-  controllers: [],
+  controllers: [TorneosController],
  providers: [],
 })
 export class AppModule {}
