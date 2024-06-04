@@ -1,8 +1,14 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TorneosController } from './torneos/torneos.controller';
-import { TorneosModule } from './torneos/torneos.module';
+import { TournamentController } from 'src/tournament/tournament.controller';
+import {TournamentModule } from 'src/tournament/tournament.module';
+import { ResultadosController } from './result/resultados.controller';
+import { ResultModule } from 'src/result/resultados.module';
+import { CompetitionController } from 'src/competition/competencia.controller';
+import { CompetitionModule } from 'src/competition/competencia.module';
+import { PlayerController } from './player/Player.controller';
+import { PlayerModule } from './player/Player.module';
 
 @Module({
   imports: [
@@ -18,11 +24,14 @@ import { TorneosModule } from './torneos/torneos.module';
       synchronize: true,
       ssl: true,
     }),
-    TorneosModule,
+    TournamentModule,
+    PlayerModule,
+    ResultModule,
+    CompetitionModule,
     
 
   ],
-  controllers: [TorneosController],
+  controllers: [TournamentController, PlayerController, ResultadosController, CompetitionController],
  providers: [],
 })
 export class AppModule {}
