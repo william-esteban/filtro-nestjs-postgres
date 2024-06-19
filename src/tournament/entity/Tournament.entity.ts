@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToMany, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
 import { Player } from 'src/player/entity/players.entity';
 import { Competition } from 'src/competition/entity/competition.entity';
 
@@ -7,19 +7,19 @@ export class Tournament {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: false})
   name: string;
 
   @Column({ type: 'text', nullable: true })
   description: string;
 
-  @Column({ type: 'date' })
+  @Column({ type: 'date', nullable: false })
   startDate: Date;
 
-  @Column({ type: 'date' })
+  @Column({ type: 'date', nullable: false })
   endDate: Date;
 
-  @ManyToMany(() => Player, player => player.tournaments)
+  @ManyToOne(() => Player, player => player.tournaments)
   @JoinTable()
   players: Player[];
 

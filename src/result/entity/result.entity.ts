@@ -16,9 +16,9 @@ export class Result {
   @ManyToOne(() => Player)
   loser: Player;
 
-  @Column()
+  @Column({ nullable: false})
   winnerScore: number;
 
-  @Column()
+  @Column({ nullable: false})
   loserScore: number;
 }

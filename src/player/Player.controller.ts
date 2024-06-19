@@ -1,5 +1,5 @@
 import { Controller, Post, Body, Get, Param, Patch, Delete, Put } from '@nestjs/common';
-import { PlayerService } from 'src/player/PlayerService'
+import { PlayerService } from'src/player/Player.service';
 import { CreatePlayerDto } from 'src/player/dto/createPlayer.dto';
 import { UpdatePlayerDto } from 'src/player/dto/updatePlayerDto';
 

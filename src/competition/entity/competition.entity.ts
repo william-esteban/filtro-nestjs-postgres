@@ -7,7 +7,7 @@ export class Competition {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: true })
   name: string;
 
   @ManyToOne(() => Tournament, tournament => tournament.competitions)

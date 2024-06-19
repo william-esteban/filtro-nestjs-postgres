@@ -1,5 +1,5 @@
-import { Controller, Post, Body, Get, Param, Patch, Delete } from '@nestjs/common';
-import { TournamentService } from './tournament.service';
+import { Controller, Post, Body, Get, Param, Patch, Delete, Put } from '@nestjs/common';
+import { TournamentService } from 'src/tournament/tournament.service';
 import { CreateTournamentDto } from 'src/tournament/dto/createTournamentDTO';
 import { UpdateTournamentDto } from 'src/tournament/dto/updateTournamentDTO';
 
@@ -7,7 +7,7 @@ import { UpdateTournamentDto } from 'src/tournament/dto/updateTournamentDTO';
 export class TournamentController {
   constructor(private readonly tournamentService: TournamentService) {}
 
-  @Post()
+  @Post('new')
   create(@Body() createTournamentDto: CreateTournamentDto) {
     return this.tournamentService.create(createTournamentDto);
   }
@@ -17,8 +17,8 @@ export class TournamentController {
     return this.tournamentService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTournamentDto: UpdateTournamentDto) {
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() updateTournamentDto: UpdateTournamentDto) {
     return this.tournamentService.update(+id, updateTournamentDto);
   }
 

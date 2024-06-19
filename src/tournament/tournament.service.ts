@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Tournament } from './entity/tournament.entity';
+import { Tournament } from 'src/tournament/entity/Tournament.entity';
 import { CreateTournamentDto } from 'src/tournament/dto/createTournamentDTO';
 import { UpdateTournamentDto } from 'src/tournament/dto/updateTournamentDTO';
 
